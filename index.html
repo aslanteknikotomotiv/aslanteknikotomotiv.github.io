@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101d2d">
+
+  <title>Aslan Teknik Otomotiv | Yedek Parça</title>
+
+  <meta name="description"
+        content="Aslan Teknik Otomotiv. Orijinal, eşdeğer ve yan sanayi otomobil yedek parça tedariki. Ataşehir, İstanbul.">
+
+  <style>
+    :root {
+      --navy: #101d2d;
+      --navy-light: #1c2e43;
+      --red: #e51b2b;
+      --text: #17263a;
+      --muted: #617086;
+      --light: #f4f6f8;
+      --border: #e2e7ed;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: white;
+      font-size: 13px;
+      padding: 10px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .topbar a:hover {
+      color: #ff7b85;
+    }
+
+    .navbar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .brand-symbol {
+      color: var(--red);
+      font-size: 43px;
+      line-height: 1;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .brand-name {
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.5px;
+    }
+
+    .brand-subtitle {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .menu-button {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(5, 12, 20, .96) 0%,
+        rgba(5, 12, 20, .84) 48%,
+        rgba(5, 12, 20, .26) 100%),
+        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+      color: white;
+    }
+
+    .hero-inner {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      padding-top: 55px;
+      padding-bottom: 55px;
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin: 15px 0 20px;
+    }
+
+    .hero p {
+      max-width: 570px;
+      font-size: 17px;
+      color: #e3e8ef;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .button-red {
+      background: var(--red);
+      color: white;
+    }
+
+    .button-red:hover {
+      background: #c90f20;
+      transform: translateY(-1px);
+    }
+
+    .button-outline {
+      border-color: rgba(255,255,255,.65);
+      color: white;
+    }
+
+    .button-outline:hover {
+      background: white;
+      color: var(--navy);
+    }
+
+    .features {
+      background: var(--light);
+      padding: 32px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .feature {
+      padding: 8px 20px;
+      border-right: 1px solid #d8dfe7;
+    }
+
+    .feature:last-child {
+      border-right: 0;
+    }
+
+    .feature-icon {
+      color: var(--red);
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .feature h3 {
+      margin: 8px 0 5px;
+      font-size: 17px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    section.content-section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      margin: 7px 0;
+      font-size: clamp(27px, 3vw, 36px);
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      background: white;
+      transition: .2s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--red);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(16,29,45,.07);
+    }
+
+    .product-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #fff0f1;
+      color: var(--red);
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    .product-card h3 {
+      margin: 0 0 8px;
+    }
+
+    .product-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-visual {
+      min-height: 340px;
+      border-radius: 12px;
+      background:
+        linear-gradient(0deg, rgba(7,17,29,.35), rgba(7,17,29,.05)),
+        url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80")
+        center / cover no-repeat;
+    }
+
+    .about-copy h2 {
+      font-size: 34px;
+      line-height: 1.25;
+      margin: 10px 0 16px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+    }
+
+    .about-points {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0;
+    }
+
+    .about-points li {
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .about-points li::before {
+      content: "✓";
+      color: var(--red);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    .contact-banner {
+      background: var(--navy);
+      color: white;
+      padding: 48px 0;
+    }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .contact-banner h2 {
+      font-size: 30px;
+      margin: 0 0 8px;
+    }
+
+    .contact-banner p {
+      color: #d4deea;
+      margin: 0;
+    }
+
+    .contact-info {
+      margin-top: 18px;
+      display: grid;
+      gap: 9px;
+      color: #e8edf5;
+      font-size: 14px;
+    }
+
+    .contact-info a:hover {
+      color: #ff7b85;
+    }
+
+    footer {
+      background: #091321;
+      color: #c3ccda;
+      padding: 27px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner strong {
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 13px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature:nth-child(2) {
+        border-right: 0;
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 30px, 1160px);
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .nav-inner {
+        min-height: 72px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .brand-symbol {
+        font-size: 36px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding-bottom: 8px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 5px;
+        border-top: 1px solid var(--border);
+      }
+
+      .hero-inner {
+        min-height: 440px;
+        padding-top: 55px;
+        padding-bottom: 55px;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .feature-grid,
+      .product-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        border-right: 0;
+        border-bottom: 1px solid #d8dfe7;
+        padding: 15px 5px;
+      }
+
+      .feature:last-child {
+        border-bottom: 0;
+      }
+
+      section.content-section {
+        padding: 52px 0;
+      }
+
+      .about-visual {
+        min-height: 240px;
+      }
+
+      .contact-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .contact-banner h2 {
+        font-size: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a href="tel:+905378785556">☎ 0537 878 55 56</a>
+      <span>⌖ Ferhatpaşa, 39. Sk. No: 15 A, 34888 Ataşehir/İstanbul</span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#anasayfa" class="brand" aria-label="Aslan Teknik Otomotiv ana sayfa">
+        <span class="brand-symbol">A</span>
+        <span class="brand-name">
+          ASLAN TEKNİK
+          <span class="brand-subtitle">OTOMOTİV</span>
+        </span>
+      </a>
+
+      <button class="menu-button" id="menuButton"
+              aria-label="Menüyü aç veya kapat"
+              aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#urunler">Ürün Grupları</a>
+        <a href="#avantajlar">Avantajlarımız</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow">Aslan Teknik Otomotiv</div>
+
+          <h1>Güvenilir Yedek Parça Çözüm Ortağınız</h1>
+
+          <p>
+            Aslan Teknik Otomotiv olarak yedek parça ürün sayımız ve
+            kalitemizle bugün, orijinal, eşdeğer ve yan sanayi yedek
+            parça tedarikinde Türkiye'nin en geniş ve esnek seçenekli
+            pazarını oluşturmaktayız.
+          </p>
+
+          <div class="actions">
+            <a class="button button-red" href="#urunler">
+              Ürün Gruplarımızı İnceleyin →
+            </a>
+            <a class="button button-outline" href="tel:+905378785556">
+              ☎ Bizi Arayın
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="avantajlar">
+      <div class="container feature-grid">
+        <article class="feature">
+          <div class="feature-icon">◇</div>
+          <h3>Geniş Ürün Yelpazesi</h3>
+          <p>Orijinal, eşdeğer ve yan sanayi yedek parça seçenekleri.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">✓</div>
+          <h3>Kalite Odaklı</h3>
+          <p>İhtiyaçlarınıza uygun ürün alternatifleri için destek.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">↗</div>
+          <h3>Esnek Tedarik</h3>
+          <p>Farklı parça ihtiyaçlarına yönelik tedarik seçenekleri.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon">◎</div>
+          <h3>Müşteri Memnuniyeti</h3>
+          <p>Ürün seçimi ve tedarik sürecinde iletişim desteği.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="urunler">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Ürün Grupları</div>
+          <h2>Otomotiv Yedek Parça Çözümlerimiz</h2>
+          <p>
+            Aracınızın ihtiyacına uygun yedek parça seçenekleri
+            hakkında bilgi almak için bizimle iletişime geçin.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-icon">◉</div>
+            <h3>Fren Sistemleri</h3>
+            <p>Fren balatası, fren diski ve ilgili parça seçenekleri.</p>
+          </article>
+
+          <article class="product-card">
+            <div class="product-icon">⚙</div>
+            <h3>Filtreler</h3>
+            <p>Yağ, hava, yakıt ve polen filtresi seçenekleri.</p>
+          </article>
+
+          <article class="product-card">
+            <div class="product-icon">↻</div>
+            <h3>Kayış ve Gergiler</h3>
+            <p>Motor kayışları ve ilgili sistem bileşenleri.</p>
+          </article>
+
+          <article class="product-card">
+            <div class="product-icon">⌁</div>
+            <h3>Süspansiyon ve Direksiyon</h3>
+            <p>Aracın süspansiyon ve direksiyon sistemlerine yönelik parçalar.</p>
+          </article>
+
+          <article class="product-card">
+            <div class="product-icon">⚙</div>
+            <h3>Motor Parçaları</h3>
+            <p>Motor bakım ve onarımına yönelik parça seçenekleri.</p>
+          </article>
+
+          <article class="product-card">
+            <div class="product-icon">ϟ</div>
+            <h3>Elektrik Sistemleri</h3>
+            <p>Aracın elektrik ve ateşleme sistemlerine yönelik parçalar.</p>
+          </article>
+        </div>
+
+        <p class="muted" style="font-size:13px;margin-top:20px">
+          Ürün grupları örnek amaçlıdır. Stok ve ürün uygunluğu için
+          lütfen bizimle iletişime geçin.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section about" id="hakkimizda">
+      <div class="container about-grid">
+        <div class="about-visual"
+             role="img"
+             aria-label="Otomotiv teknik çalışma alanı"></div>
+
+        <div class="about-copy">
+          <div class="eyebrow">Hakkımızda</div>
+          <h2>Aslan Teknik Otomotiv</h2>
+
+          <p>
+            Aslan Teknik Otomotiv olarak yedek parça ürün sayımız ve
+            kalitemizle bugün, orijinal, eşdeğer ve yan sanayi yedek
+            parça tedarikinde Türkiye'nin en geniş ve esnek seçenekli
+            pazarını oluşturmaktayız.
+          </p>
+
+          <ul class="about-points">
+            <li>Orijinal yedek parça seçenekleri</li>
+            <li>Eşdeğer ve yan sanayi ürün alternatifleri</li>
+            <li>İhtiyaca uygun parça tedariki</li>
+          </ul>
+
+          <a class="button button-red" href="#iletisim">
+            Bizimle İletişime Geçin →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-banner" id="iletisim">
+      <div class="container contact-inner">
+        <div>
+          <h2>Aradığınız Yedek Parça İçin Bize Ulaşın</h2>
+          <p>Ürün ve tedarik seçenekleri hakkında bilgi alın.</p>
+
+          <div class="contact-info">
+            <a href="tel:+905378785556">☎ 0537 878 55 56</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ferhatpa%C5%9Fa%2C%2039.%20Sk.%20No%3A%2015%20A%2C%2034888%20Ata%C5%9Fehir%2F%C4%B0stanbul"
+               target="_blank" rel="noopener noreferrer">
+              ⌖ Ferhatpaşa, 39. Sk. No: 15 A,<br>
+              &nbsp;&nbsp; 34888 Ataşehir/İstanbul
+            </a>
+          </div>
+        </div>
+
+        <a class="button button-red" href="tel:+905378785556">
+          Hemen Arayın →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <strong>ASLAN TEKNİK OTOMOTİV</strong>
+      <span>Güvenilir Yedek Parça, Güçlü Yarınlar</span>
+      <span>© <span id="year"></span> Aslan Teknik Otomotiv</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
